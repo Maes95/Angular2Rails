@@ -1,0 +1,13 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="hero.name" required>
+    </div>
+    <div class="form-group">
+      <label for="power">Power</label>
+      <input type="text" class="form-control" id="power" [(ngModel)]="hero.power" required>
+    </div>
+    <button type="submit" class="btn btn-default">Save</button>
+  </form>
+</div>

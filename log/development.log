@@ -1,0 +1,1119 @@
+  [1m[36mSQL (66.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (161.5ms)[0m  CREATE TABLE "cars" ("id" serial primary key, "make" character varying NOT NULL, "model" character varying NOT NULL, "year" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (42.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_cars_on_make_and_model_and_year" ON "cars" USING btree ("make", "model", "year")[0m
+  [1m[35m (32.3ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (42.7ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (10.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160427230958')[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (139.8ms)[0m  [1mCREATE TABLE "cars" ("id" serial primary key, "make" character varying NOT NULL, "model" character varying NOT NULL, "year" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (53.1ms)[0m  CREATE UNIQUE INDEX  "index_cars_on_make_and_model_and_year" ON "cars" USING btree ("make", "model", "year")
+  [1m[36m (43.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (42.9ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (10.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160427230958')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mCar Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1980' AND "cars"."make" = 'BMW' AND "cars"."model" = 'M1') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "BMW"], ["model", "M1"], ["year", "1980"], ["created_at", "2016-07-14 04:31:39.016113"], ["updated_at", "2016-07-14 04:31:39.016113"]]
+  [1m[36m (29.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '2016' AND "cars"."make" = 'BMW' AND "cars"."model" = '740i') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "BMW"], ["model", "740i"], ["year", "2016"], ["created_at", "2016-07-14 04:31:39.055981"], ["updated_at", "2016-07-14 04:31:39.055981"]]
+  [1m[36m (12.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1990' AND "cars"."make" = 'Ferrari' AND "cars"."model" = 'Testarossa') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Ferrari"], ["model", "Testarossa"], ["year", "1990"], ["created_at", "2016-07-14 04:31:39.070553"], ["updated_at", "2016-07-14 04:31:39.070553"]]
+  [1m[36m (9.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1992' AND "cars"."make" = 'Porsche' AND "cars"."model" = '911') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Porsche"], ["model", "911"], ["year", "1992"], ["created_at", "2016-07-14 04:31:39.081691"], ["updated_at", "2016-07-14 04:31:39.081691"]]
+  [1m[36m (9.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '2005' AND "cars"."make" = 'Ford' AND "cars"."model" = 'Taurus') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Ford"], ["model", "Taurus"], ["year", "2005"], ["created_at", "2016-07-14 04:31:39.092716"], ["updated_at", "2016-07-14 04:31:39.092716"]]
+  [1m[36m (9.2ms)[0m  [1mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'cars'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/api/cars.json" for ::ffff:127.0.0.1 at 2016-07-14 00:47:23 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (12.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CarsController#index as JSON
+  [1m[35mCar Load (0.8ms)[0m  SELECT "cars".* FROM "cars"
+Completed 200 OK in 15ms (Views: 9.0ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/cars.json" for ::ffff:127.0.0.1 at 2016-07-14 00:47:26 -0400
+Processing by CarsController#index as JSON
+  [1m[36mCar Load (0.5ms)[0m  [1mSELECT "cars".* FROM "cars"[0m
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/cars.json" for ::ffff:127.0.0.1 at 2016-07-14 00:48:11 -0400
+Processing by CarsController#index as JSON
+  [1m[35mCar Load (0.4ms)[0m  SELECT "cars".* FROM "cars"
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.4ms)
+Incoming Headers:
+  Origin: http://localhost:4200
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+
+
+Started POST "/api/cars.json" for ::ffff:127.0.0.1 at 2016-07-14 00:48:29 -0400
+Processing by CarsController#create as JSON
+  Parameters: {"car"=>{"year"=>"1922", "make"=>"BMW", "model"=>"Model"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mCar Exists (1.3ms)[0m  SELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1922' AND "cars"."make" = 'BMW' AND "cars"."model" = 'Model') LIMIT 1
+  [1m[36mSQL (33.0ms)[0m  [1mINSERT INTO "cars" ("year", "make", "model", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["year", "1922"], ["make", "BMW"], ["model", "Model"], ["created_at", "2016-07-14 04:48:29.740641"], ["updated_at", "2016-07-14 04:48:29.740641"]]
+  [1m[35m (69.4ms)[0m  COMMIT
+Completed 201 Created in 307ms (Views: 0.8ms | ActiveRecord: 104.1ms)
+
+
+Started GET "/api/cars.json" for ::ffff:127.0.0.1 at 2016-07-14 00:48:29 -0400
+Processing by CarsController#index as JSON
+  [1m[36mCar Load (0.3ms)[0m  [1mSELECT "cars".* FROM "cars"[0m
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/cars/6.json" for ::ffff:127.0.0.1 at 2016-07-14 00:48:38 -0400
+Processing by CarsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[35mCar Load (0.2ms)[0m  SELECT  "cars".* FROM "cars" WHERE "cars"."id" = $1 LIMIT 1  [["id", 6]]
+Completed 200 OK in 51ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+Incoming Headers:
+  Origin: http://localhost:4200
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+
+
+Started PATCH "/api/cars/6.json" for ::ffff:127.0.0.1 at 2016-07-14 00:48:47 -0400
+Processing by CarsController#update as JSON
+  Parameters: {"car"=>{"id"=>6, "make"=>"BMW", "model"=>"Rojo", "year"=>"1922", "created_at"=>"2016-07-14T04:48:29.740Z", "updated_at"=>"2016-07-14T04:48:29.740Z"}, "id"=>"6"}
+  [1m[36mCar Load (0.5ms)[0m  [1mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = $1 LIMIT 1[0m  [["id", 6]]
+Unpermitted parameters: id, created_at, updated_at
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mCar Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1922' AND "cars"."id" != 6 AND "cars"."make" = 'BMW' AND "cars"."model" = 'Rojo') LIMIT 1[0m
+  [1m[35mSQL (43.5ms)[0m  UPDATE "cars" SET "model" = $1, "updated_at" = $2 WHERE "cars"."id" = $3  [["model", "Rojo"], ["updated_at", "2016-07-14 04:48:47.292557"], ["id", 6]]
+  [1m[36m (44.8ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 96ms (Views: 0.4ms | ActiveRecord: 89.6ms)
+
+
+Started GET "/api/cars.json" for ::ffff:127.0.0.1 at 2016-07-14 00:48:47 -0400
+Processing by CarsController#index as JSON
+  [1m[35mCar Load (0.3ms)[0m  SELECT "cars".* FROM "cars"
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+Incoming Headers:
+  Origin: http://localhost:4200
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+
+
+Started DELETE "/api/cars/5.json" for ::ffff:127.0.0.1 at 2016-07-14 00:48:52 -0400
+Processing by CarsController#destroy as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mCar Load (0.5ms)[0m  [1mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "cars" WHERE "cars"."id" = $1[0m  [["id", 5]]
+  [1m[35m (35.0ms)[0m  COMMIT
+Completed 200 OK in 39ms (ActiveRecord: 36.1ms)
+
+
+Started GET "/api/cars.json" for ::ffff:127.0.0.1 at 2016-07-14 00:48:52 -0400
+Processing by CarsController#index as JSON
+  [1m[36mCar Load (0.3ms)[0m  [1mSELECT "cars".* FROM "cars"[0m
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/cars.json" for ::ffff:127.0.0.1 at 2016-07-14 00:54:46 -0400
+Processing by CarsController#index as JSON
+  [1m[35mCar Load (0.2ms)[0m  SELECT "cars".* FROM "cars"
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/cars.json" for ::ffff:127.0.0.1 at 2016-07-14 01:00:09 -0400
+Processing by CarsController#index as JSON
+  [1m[36mCar Load (0.4ms)[0m  [1mSELECT "cars".* FROM "cars"[0m
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateHeroesTable (20160714050949)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateHeroesTable (20160714050949)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateHeroesTable (20160714050949)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateHeroesTable (20160714050949)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (184.0ms)[0m  [1mCREATE TABLE "heroes_tables" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL) [0m
+  [1m[35m (44.1ms)[0m  CREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes"  ("name", "power")
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateHeroesTable (20160714050949)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (119.1ms)[0m  [1mCREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL) [0m
+  [1m[35m (32.1ms)[0m  CREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes"  ("name", "power")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160714050949"]]
+  [1m[35m (10.6ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'cars'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.7ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'heroes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (81.3ms)[0m  DROP TABLE "cars" CASCADE
+  [1m[36m (111.1ms)[0m  [1mCREATE TABLE "cars" ("id" serial primary key, "make" character varying NOT NULL, "model" character varying NOT NULL, "year" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (40.6ms)[0m  CREATE UNIQUE INDEX  "index_cars_on_make_and_model_and_year" ON "cars" USING btree ("make", "model", "year")
+  [1m[36m (10.5ms)[0m  [1mDROP TABLE "heroes" CASCADE[0m
+  [1m[35m (100.0ms)[0m  CREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL) 
+  [1m[36m (51.3ms)[0m  [1mCREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes" USING btree ("name", "power")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (125.7ms)[0m  DROP TABLE "cars" CASCADE
+  [1m[36m (133.9ms)[0m  [1mCREATE TABLE "cars" ("id" serial primary key, "make" character varying NOT NULL, "model" character varying NOT NULL, "year" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (41.2ms)[0m  CREATE UNIQUE INDEX  "index_cars_on_make_and_model_and_year" ON "cars" USING btree ("make", "model", "year")
+  [1m[36m (133.0ms)[0m  [1mCREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL) [0m
+  [1m[35m (40.8ms)[0m  CREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes" USING btree ("name", "power")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (9.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160714050949')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1980' AND "cars"."make" = 'BMW' AND "cars"."model" = 'M1') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "BMW"], ["model", "M1"], ["year", "1980"], ["created_at", "2016-07-14 05:14:04.360257"], ["updated_at", "2016-07-14 05:14:04.360257"]]
+  [1m[36m (26.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '2016' AND "cars"."make" = 'BMW' AND "cars"."model" = '740i') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "BMW"], ["model", "740i"], ["year", "2016"], ["created_at", "2016-07-14 05:14:04.390182"], ["updated_at", "2016-07-14 05:14:04.390182"]]
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1990' AND "cars"."make" = 'Ferrari' AND "cars"."model" = 'Testarossa') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Ferrari"], ["model", "Testarossa"], ["year", "1990"], ["created_at", "2016-07-14 05:14:04.401110"], ["updated_at", "2016-07-14 05:14:04.401110"]]
+  [1m[36m (8.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1992' AND "cars"."make" = 'Porsche' AND "cars"."model" = '911') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Porsche"], ["model", "911"], ["year", "1992"], ["created_at", "2016-07-14 05:14:04.413174"], ["updated_at", "2016-07-14 05:14:04.413174"]]
+  [1m[36m (7.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '2005' AND "cars"."make" = 'Ford' AND "cars"."model" = 'Taurus') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Ford"], ["model", "Taurus"], ["year", "2005"], ["created_at", "2016-07-14 05:14:04.423224"], ["updated_at", "2016-07-14 05:14:04.423224"]]
+  [1m[36m (9.0ms)[0m  [1mCOMMIT[0m
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (12.6ms)[0m  DROP TABLE "cars" CASCADE
+  [1m[36m (111.0ms)[0m  [1mCREATE TABLE "cars" ("id" serial primary key, "make" character varying NOT NULL, "model" character varying NOT NULL, "year" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (75.5ms)[0m  CREATE UNIQUE INDEX  "index_cars_on_make_and_model_and_year" ON "cars" USING btree ("make", "model", "year")
+  [1m[36m (11.0ms)[0m  [1mDROP TABLE "heroes" CASCADE[0m
+  [1m[35m (77.4ms)[0m  CREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL) 
+  [1m[36m (52.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes" USING btree ("name", "power")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.9ms)[0m  DROP TABLE "cars" CASCADE
+  [1m[36m (88.7ms)[0m  [1mCREATE TABLE "cars" ("id" serial primary key, "make" character varying NOT NULL, "model" character varying NOT NULL, "year" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (65.0ms)[0m  CREATE UNIQUE INDEX  "index_cars_on_make_and_model_and_year" ON "cars" USING btree ("make", "model", "year")
+  [1m[36m (10.5ms)[0m  [1mDROP TABLE "heroes" CASCADE[0m
+  [1m[35m (111.1ms)[0m  CREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL) 
+  [1m[36m (42.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes" USING btree ("name", "power")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mCar Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1980' AND "cars"."make" = 'BMW' AND "cars"."model" = 'M1') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "BMW"], ["model", "M1"], ["year", "1980"], ["created_at", "2016-07-14 05:14:33.284605"], ["updated_at", "2016-07-14 05:14:33.284605"]]
+  [1m[36m (4.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '2016' AND "cars"."make" = 'BMW' AND "cars"."model" = '740i') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "BMW"], ["model", "740i"], ["year", "2016"], ["created_at", "2016-07-14 05:14:33.292287"], ["updated_at", "2016-07-14 05:14:33.292287"]]
+  [1m[36m (9.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1990' AND "cars"."make" = 'Ferrari' AND "cars"."model" = 'Testarossa') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Ferrari"], ["model", "Testarossa"], ["year", "1990"], ["created_at", "2016-07-14 05:14:33.303640"], ["updated_at", "2016-07-14 05:14:33.303640"]]
+  [1m[36m (8.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1992' AND "cars"."make" = 'Porsche' AND "cars"."model" = '911') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Porsche"], ["model", "911"], ["year", "1992"], ["created_at", "2016-07-14 05:14:33.314287"], ["updated_at", "2016-07-14 05:14:33.314287"]]
+  [1m[36m (9.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '2005' AND "cars"."make" = 'Ford' AND "cars"."model" = 'Taurus') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Ford"], ["model", "Taurus"], ["year", "2005"], ["created_at", "2016-07-14 05:14:33.326035"], ["updated_at", "2016-07-14 05:14:33.326035"]]
+  [1m[36m (8.4ms)[0m  [1mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'cars'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.2ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'heroes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (884.5ms)[0m  [1mDROP DATABASE IF EXISTS "dream_cars_development"[0m
+  [1m[35m (229.2ms)[0m  DROP DATABASE IF EXISTS "dream_cars_test"
+  [1m[36m (1538.7ms)[0m  [1mCREATE DATABASE "dream_cars_development" ENCODING = 'unicode'[0m
+  [1m[35m (765.2ms)[0m  CREATE DATABASE "dream_cars_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (164.5ms)[0m  CREATE TABLE "cars" ("id" serial primary key, "make" character varying NOT NULL, "model" character varying NOT NULL, "year" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (83.3ms)[0m  [1mCREATE UNIQUE INDEX  "index_cars_on_make_and_model_and_year" ON "cars" USING btree ("make", "model", "year")[0m
+  [1m[35m (77.2ms)[0m  CREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL) 
+  [1m[36m (52.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes" USING btree ("name", "power")[0m
+  [1m[35m (64.4ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (42.9ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.6ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (10.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160714050949')[0m
+  [1m[35mSQL (0.4ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (175.1ms)[0m  [1mCREATE TABLE "cars" ("id" serial primary key, "make" character varying NOT NULL, "model" character varying NOT NULL, "year" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (40.4ms)[0m  CREATE UNIQUE INDEX  "index_cars_on_make_and_model_and_year" ON "cars" USING btree ("make", "model", "year")
+  [1m[36m (88.3ms)[0m  [1mCREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL) [0m
+  [1m[35m (53.7ms)[0m  CREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes" USING btree ("name", "power")
+  [1m[36m (54.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (53.9ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (9.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160714050949')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mCar Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1980' AND "cars"."make" = 'BMW' AND "cars"."model" = 'M1') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "BMW"], ["model", "M1"], ["year", "1980"], ["created_at", "2016-07-14 05:15:06.557729"], ["updated_at", "2016-07-14 05:15:06.557729"]]
+  [1m[36m (8.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '2016' AND "cars"."make" = 'BMW' AND "cars"."model" = '740i') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "BMW"], ["model", "740i"], ["year", "2016"], ["created_at", "2016-07-14 05:15:06.568320"], ["updated_at", "2016-07-14 05:15:06.568320"]]
+  [1m[36m (9.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1990' AND "cars"."make" = 'Ferrari' AND "cars"."model" = 'Testarossa') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Ferrari"], ["model", "Testarossa"], ["year", "1990"], ["created_at", "2016-07-14 05:15:06.579774"], ["updated_at", "2016-07-14 05:15:06.579774"]]
+  [1m[36m (8.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCar Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '1992' AND "cars"."make" = 'Porsche' AND "cars"."model" = '911') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Porsche"], ["model", "911"], ["year", "1992"], ["created_at", "2016-07-14 05:15:06.590758"], ["updated_at", "2016-07-14 05:15:06.590758"]]
+  [1m[36m (8.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mCar Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "cars" WHERE ("cars"."year" = '2005' AND "cars"."make" = 'Ford' AND "cars"."model" = 'Taurus') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "cars" ("make", "model", "year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["make", "Ford"], ["model", "Taurus"], ["year", "2005"], ["created_at", "2016-07-14 05:15:06.602807"], ["updated_at", "2016-07-14 05:15:06.602807"]]
+  [1m[36m (7.7ms)[0m  [1mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'cars'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.4ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'heroes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (164.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (63.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateHeroesTable (20160714050949)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (100.7ms)[0m  [1mCREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (40.3ms)[0m  CREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes"  ("name", "power")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160714050949"]]
+  [1m[35m (15.3ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'heroes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.3ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'heroes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mHero Load (0.3ms)[0m  [1mSELECT "heros".* FROM "heros"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (5.2ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'heroes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'heroes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (63.7ms)[0m  DROP TABLE "heroes" CASCADE
+  [1m[36m (223.0ms)[0m  [1mCREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (95.5ms)[0m  CREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes" USING btree ("name", "power")
+  [1m[36m (0.6ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (235.9ms)[0m  [1mCREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (42.7ms)[0m  CREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes" USING btree ("name", "power")
+  [1m[36m (99.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (42.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (10.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160714050949')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (5.1ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'heroes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (225.8ms)[0m  [1mDROP DATABASE IF EXISTS "heroes_development"[0m
+  [1m[35m (214.7ms)[0m  DROP DATABASE IF EXISTS "heroes_test"
+  [1m[36m (683.7ms)[0m  [1mCREATE DATABASE "heroes_development" ENCODING = 'unicode'[0m
+  [1m[35m (793.8ms)[0m  CREATE DATABASE "heroes_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (199.0ms)[0m  CREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (51.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes" USING btree ("name", "power")[0m
+  [1m[35m (95.9ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (42.7ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.7ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (9.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160714050949')[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE EXTENSION IF NOT EXISTS "plpgsql"
+  [1m[36m (310.8ms)[0m  [1mCREATE TABLE "heroes" ("id" serial primary key, "name" character varying NOT NULL, "power" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (53.0ms)[0m  CREATE UNIQUE INDEX  "index_heroes_on_name_and_power" ON "heroes" USING btree ("name", "power")
+  [1m[36m (43.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (42.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (10.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160714050949')
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DropHeroesTable (20160714053352)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (11.5ms)[0m  [1mDROP TABLE "heroes"[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160714053352"]]
+  [1m[36m (9.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateHeros (20160714053527)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (205.9ms)[0m  [1mCREATE TABLE "heros" ("id" serial primary key, "name" character varying, "power" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160714053527"]]
+  [1m[36m (9.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'heros'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/ember-cli-live-reload.js" for 127.0.0.1 at 2016-07-14 01:43:32 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/ember-cli-live-reload.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (30.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (55.0ms)
+
+
+Started GET "/app/+car/index.js" for 127.0.0.1 at 2016-07-14 01:43:33 -0400
+
+ActionController::RoutingError (No route matches [GET] "/app/+car/index.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.5ms)
+
+
+Started GET "/app/+new-car/index.js" for 127.0.0.1 at 2016-07-14 01:43:33 -0400
+
+ActionController::RoutingError (No route matches [GET] "/app/+new-car/index.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (12.5ms)
+
+
+Started GET "/app/+edit-car/index.js" for 127.0.0.1 at 2016-07-14 01:43:33 -0400
+
+ActionController::RoutingError (No route matches [GET] "/app/+edit-car/index.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (15.8ms)
+
+
+Started GET "/ember-cli-live-reload.js" for 127.0.0.1 at 2016-07-14 01:43:44 -0400
+
+ActionController::RoutingError (No route matches [GET] "/ember-cli-live-reload.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (13.7ms)
+
+
+Started GET "/app/+car/index.js" for 127.0.0.1 at 2016-07-14 01:43:44 -0400
+
+ActionController::RoutingError (No route matches [GET] "/app/+car/index.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (15.4ms)
+
+
+Started GET "/app/+new-car/index.js" for 127.0.0.1 at 2016-07-14 01:43:44 -0400
+
+ActionController::RoutingError (No route matches [GET] "/app/+new-car/index.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (13.7ms)
+
+
+Started GET "/app/+edit-car/index.js" for 127.0.0.1 at 2016-07-14 01:43:44 -0400
+
+ActionController::RoutingError (No route matches [GET] "/app/+edit-car/index.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (14.8ms)
+
+
+Started GET "/heros.json" for 127.0.0.1 at 2016-07-14 01:43:52 -0400
+
+ActionController::RoutingError (No route matches [GET] "/heros.json"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.1ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.0ms)
+
+
+Started GET "/api/heros.json" for 127.0.0.1 at 2016-07-14 01:44:02 -0400
+Processing by HerosController#index as JSON
+  [1m[35mHero Load (0.8ms)[0m  SELECT "heros".* FROM "heros"
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 1.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "heros" ("name", "power", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Superman"], ["power", "Force"], ["created_at", "2016-07-14 05:44:37.799641"], ["updated_at", "2016-07-14 05:44:37.799641"]]
+  [1m[35m (6.2ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "heros" ("name", "power", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "Batman"], ["power", "Money"], ["created_at", "2016-07-14 05:44:37.810090"], ["updated_at", "2016-07-14 05:44:37.810090"]]
+  [1m[36m (9.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "heros" ("name", "power", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Flash"], ["power", "Speed"], ["created_at", "2016-07-14 05:44:37.821606"], ["updated_at", "2016-07-14 05:44:37.821606"]]
+  [1m[35m (9.1ms)[0m  COMMIT
+
+
+Started GET "/api/heros.json" for 127.0.0.1 at 2016-07-14 01:44:47 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HerosController#index as JSON
+  [1m[35mHero Load (0.5ms)[0m  SELECT "heros".* FROM "heros"
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/index.html" for 127.0.0.1 at 2016-07-14 13:32:22 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (66.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/index.html"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (52.5ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (82.0ms)
+
+
+Started GET "/api/heros.json" for 127.0.0.1 at 2016-07-14 13:32:26 -0400
+Processing by HerosController#index as JSON
+  [1m[35mHero Load (119.0ms)[0m  SELECT "heros".* FROM "heros"
+Completed 200 OK in 318ms (Views: 10.6ms | ActiveRecord: 274.4ms)
+
+
+Started GET "/new-hero.component.html" for ::ffff:127.0.0.1 at 2016-07-14 13:34:10 -0400
+
+ActionController::RoutingError (No route matches [GET] "/new-hero.component.html"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (20.1ms)
+Incoming Headers:
+  Origin: http://localhost:4200
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+
+
+Started POST "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-14 13:48:32 -0400
+Processing by HerosController#create as JSON
+  Parameters: {"hero"=>{"name"=>"Zeus", "power"=>"Rayos"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (102.9ms)[0m  INSERT INTO "heros" ("name", "power", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "Zeus"], ["power", "Rayos"], ["created_at", "2016-07-14 17:48:32.745247"], ["updated_at", "2016-07-14 17:48:32.745247"]]
+  [1m[36m (82.5ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 244ms (Views: 1.9ms | ActiveRecord: 185.9ms)
+Incoming Headers:
+  Origin: http://localhost:4200
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+
+
+Started POST "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-14 13:49:33 -0400
+Processing by HerosController#create as JSON
+  Parameters: {"hero"=>{"name"=>"Zeus", "power"=>"Rayos"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "heros" ("name", "power", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Zeus"], ["power", "Rayos"], ["created_at", "2016-07-14 17:49:33.152179"], ["updated_at", "2016-07-14 17:49:33.152179"]]
+  [1m[35m (56.9ms)[0m  COMMIT
+Completed 201 Created in 62ms (Views: 1.0ms | ActiveRecord: 57.6ms)
+
+
+Started GET "/api/heros.json" for 127.0.0.1 at 2016-07-14 13:49:54 -0400
+Processing by HerosController#index as JSON
+  [1m[36mHero Load (0.3ms)[0m  [1mSELECT "heros".* FROM "heros"[0m
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/app/hero/hero.js" for ::ffff:127.0.0.1 at 2016-07-14 16:42:05 -0400
+
+ActionController::RoutingError (No route matches [GET] "/app/hero/hero.js"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.3ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.6ms)
+
+
+Started GET "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-14 16:43:15 -0400
+Processing by HerosController#index as JSON
+  [1m[35mHero Load (14.4ms)[0m  SELECT "heros".* FROM "heros"
+Completed 200 OK in 16ms (Views: 1.6ms | ActiveRecord: 14.4ms)
+Incoming Headers:
+  Origin: http://localhost:4200
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+
+
+Started DELETE "/api/heros/5.json" for ::ffff:127.0.0.1 at 2016-07-14 16:45:42 -0400
+Processing by HerosController#destroy as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mHero Load (8.8ms)[0m  [1mSELECT  "heros".* FROM "heros" WHERE "heros"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (14.2ms)[0m  [1mDELETE FROM "heros" WHERE "heros"."id" = $1[0m  [["id", 5]]
+  [1m[35m (14.5ms)[0m  COMMIT
+Completed 204 No Content in 142ms (ActiveRecord: 37.6ms)
+
+
+Started GET "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-14 16:45:42 -0400
+Processing by HerosController#index as JSON
+  [1m[36mHero Load (0.5ms)[0m  [1mSELECT "heros".* FROM "heros"[0m
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/index.html" for 127.0.0.1 at 2016-07-19 17:50:28 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (72.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/index.html"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack-rewrite (1.5.1) lib/rack/rewrite.rb:24:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /home/michel/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (42.2ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/michel/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (83.9ms)
+
+
+Started GET "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-19 17:50:51 -0400
+Processing by HerosController#index as JSON
+  [1m[35mHero Load (52.4ms)[0m  SELECT "heros".* FROM "heros"
+Completed 200 OK in 166ms (Views: 10.5ms | ActiveRecord: 142.1ms)
+Incoming Headers:
+  Origin: http://localhost:4200
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+
+
+Started POST "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-19 17:51:12 -0400
+Processing by HerosController#create as JSON
+  Parameters: {"hero"=>{"name"=>"Ares", "power"=>"Guerra"}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (97.5ms)[0m  INSERT INTO "heros" ("name", "power", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "Ares"], ["power", "Guerra"], ["created_at", "2016-07-19 21:51:12.352077"], ["updated_at", "2016-07-19 21:51:12.352077"]]
+  [1m[36m (52.2ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 240ms (Views: 1.9ms | ActiveRecord: 150.2ms)
+
+
+Started GET "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-19 17:51:12 -0400
+Processing by HerosController#index as JSON
+  [1m[35mHero Load (0.3ms)[0m  SELECT "heros".* FROM "heros"
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/heros/4.json" for ::ffff:127.0.0.1 at 2016-07-19 17:51:21 -0400
+Processing by HerosController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mHero Load (0.3ms)[0m  [1mSELECT  "heros".* FROM "heros" WHERE "heros"."id" = $1 LIMIT 1[0m  [["id", 4]]
+Completed 200 OK in 30ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+Incoming Headers:
+  Origin: http://localhost:4200
+  Access-Control-Request-Method: 
+  Access-Control-Request-Headers: 
+
+
+Started PATCH "/api/heros/4.json" for ::ffff:127.0.0.1 at 2016-07-19 17:51:26 -0400
+Processing by HerosController#update as JSON
+  Parameters: {"hero"=>{"id"=>4, "name"=>"Zeus", "power"=>"Muchos Rayos", "created_at"=>"2016-07-14T17:48:32.745Z", "updated_at"=>"2016-07-14T17:48:32.745Z"}, "id"=>"4"}
+  [1m[35mHero Load (0.4ms)[0m  SELECT  "heros".* FROM "heros" WHERE "heros"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "heros".* FROM "heros" WHERE "heros"."id" = $1 LIMIT 1[0m  [["id", "4"]]
+Unpermitted parameters: id, created_at, updated_at
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "heros" SET "power" = $1, "updated_at" = $2 WHERE "heros"."id" = $3[0m  [["power", "Muchos Rayos"], ["updated_at", "2016-07-19 21:51:26.479513"], ["id", 4]]
+  [1m[35m (22.3ms)[0m  COMMIT
+Completed 204 No Content in 29ms (ActiveRecord: 23.5ms)
+
+
+Started GET "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-19 17:51:26 -0400
+Processing by HerosController#index as JSON
+  [1m[36mHero Load (0.6ms)[0m  [1mSELECT "heros".* FROM "heros"[0m
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-19 17:53:00 -0400
+Processing by HerosController#index as JSON
+  [1m[35mHero Load (0.2ms)[0m  SELECT "heros".* FROM "heros"
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-19 18:00:12 -0400
+Processing by HerosController#index as JSON
+  [1m[36mHero Load (11.1ms)[0m  [1mSELECT "heros".* FROM "heros"[0m
+Completed 200 OK in 36ms (Views: 20.7ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-19 18:00:25 -0400
+Processing by HerosController#index as JSON
+  [1m[35mHero Load (0.5ms)[0m  SELECT "heros".* FROM "heros"
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/heros.json" for ::ffff:127.0.0.1 at 2016-07-19 18:00:50 -0400
+Processing by HerosController#index as JSON
+  [1m[36mHero Load (0.4ms)[0m  [1mSELECT "heros".* FROM "heros"[0m
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.4ms)
